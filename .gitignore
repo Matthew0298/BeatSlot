@@ -1,0 +1,28 @@
+# IDE
+.idea/
+.vscode/
+
+# Env / secrets
+**/.env
+**/.env.local
+**/properties.env
+!**/.env.example
+
+# Node
+**/node_modules/
+**/build/
+**/.expo/
+**/dist/
+**/web-build/
+**/*.tsbuildinfo
+
+# Go
+**/*.exe
+**/*.test
+**/vendor/
+
+# Logs
+**/*.log
+
+# OS
+.DS_Store

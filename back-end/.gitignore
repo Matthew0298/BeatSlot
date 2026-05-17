@@ -1,0 +1,23 @@
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# IDE files
+.vscode/
+
+# Dependency directories
+vendor/
+
+# Environment
+properties.env
+
+# Docker
+.dockerignore
+
+# Logs
+*.log

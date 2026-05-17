@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: gymbook
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    env_file:
+      - properties.env
+    environment:
+      DATABASE_DSN: postgres://postgres:postgres@db:5432/gymbook?sslmode=disable
+      APP_PORT: ':8080'
+      APP_ENV: development
+    depends_on:
+      - db
+
+volumes:
+  db-data:

@@ -1,0 +1,30 @@
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - errcheck
+    - unused
+    - goimports
+    - gosimple
+    - ineffassign
+    - staticcheck
+  disable:
+    - typecheck
+    - vet
+    - revive
+
+issues:
+  exclude-dirs:
+    - vendor
+    - docs
+    - migrations
+    - internal/middleware
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+    - path: \.go
+      linters:
+        - typecheck
+

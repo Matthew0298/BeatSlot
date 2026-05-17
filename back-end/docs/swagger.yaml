@@ -1,0 +1,105 @@
+definitions:
+  controller.LoginInput:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  controller.RegisterInput:
+    properties:
+      birth_date:
+        type: string
+      codice_fiscale:
+        type: string
+      cognome:
+        type: string
+      email:
+        type: string
+      gender:
+        type: string
+      indirizzo:
+        type: string
+      nome:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Logs in a user with the provided credentials.
+      parameters:
+      - description: User login input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LoginInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Logged in user
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Login a user
+      tags:
+      - auth
+  /api/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Registers a new user with the provided input data.
+      parameters:
+      - description: User registration input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/controller.RegisterInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created user
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Register a new user
+      tags:
+      - auth
+swagger: "2.0"
