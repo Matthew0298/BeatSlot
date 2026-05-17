@@ -16,14 +16,13 @@ permissions:
   contents: read
   packages: write
 
-defaults:
-  run:
-    working-directory: back-end
-
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: back-end
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
@@ -44,6 +43,9 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     needs: lint
+    defaults:
+      run:
+        working-directory: back-end
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
